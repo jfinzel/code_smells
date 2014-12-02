@@ -1,7 +1,7 @@
 class Customer
   attr_reader :date_of_birth
   attr_reader :rentals
-  attr_reader :house
+  attr_reader :building_number
   attr_reader :street
   attr_reader :city
   attr_reader :state

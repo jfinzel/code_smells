@@ -1,5 +1,10 @@
 class MovieStore
 
+  attr_reader :building_number
+  attr_reader :street
+  attr_reader :city
+  attr_reader :state
+  attr_reader :zipcode
   attr_reader :name
 
   def initialize(name)
