@@ -1,46 +1,33 @@
 require "minitest"
 require "minitest/autorun"
 require "minitest/pride"
-require "faker"
 require "./movie"
-require "./customer"
+require "./rating"
 
 describe Movie do
   describe 'Rental Ages' do
-    let(:full_name){Faker::Name.name}
-    let(:number){Faker::Address.building_number}
-    let(:street){Faker::Address.street_name}
-    let(:city){Faker::Address.city}
-    let(:state){Faker::Address.state_abbr}
-    let(:zip){Faker::Address.zip}
-    it 'denies rental of R-rated movies to kids' do
-      customer = Customer.new(full_name, "2008-01-01", number, street, city, state, zip)
-      movie = Movie.new("Braveheart", 'R')
-      assert_raises CustomerUnderageException do
-        movie.rent_for(customer)
-      end
+    it 'knows minimum age for G rated movies' do
+      movie = Movie.new('Cars', Rating::G)
+      movie.min_age_to_rent.must_equal 0
     end
 
-    it 'denies rental of NC-17 movies to people under 18' do
-      customer = Customer.new(full_name, "1997-01-01", number, street, city, state, zip)
-      movie = Movie.new("XXX", 'NC17')
-      assert_raises CustomerUnderageException do
-        movie.rent_for(customer)
-      end
+    it 'knows minimum age for PG rated movies' do
+      movie = Movie.new('Secondhand Lions', Rating::PG)
+      movie.min_age_to_rent.must_equal 0
     end
 
-    it 'allows legal movie renting' do
-      customer = Customer.new(full_name, "1980-01-01", number, street, city, state, zip)
-      movie = Movie.new("Spider-Man", 'PG13')
-      movie.rent_for(customer)
-      customer.rentals.must_include movie
+    it 'knows minimum age for PG13 rated movies' do
+      movie = Movie.new("Spider-Man", Rating::PG13)
+      movie.min_age_to_rent.must_equal 13
     end
 
-    it 'allows anyone to rent G-rated movies' do
-      customer = Customer.new(full_name, "2014-01-01", number, street, city, state, zip)
-      movie = Movie.new("The Lion King", 'G')
-      movie.rent_for(customer)
-      customer.rentals.must_include movie
+    it 'knows minimum age for R rated movies' do
+      movie = Movie.new("Braveheart", Rating::R)
+      movie.min_age_to_rent.must_equal 17
+    end
+    it 'knows minimum age for NC17 rated movies' do
+      movie = Movie.new("XXX",  Rating::NC17)
+      movie.min_age_to_rent.must_equal 18
     end
   end
 end
