@@ -1,5 +1,3 @@
-require 'pry'
-require './rating'
 class Customer
   attr_reader :name
   attr_reader :date_of_birth
