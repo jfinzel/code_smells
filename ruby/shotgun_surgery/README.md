@@ -2,7 +2,7 @@
 
 ![https://www.flickr.com/photos/mbshane/3165456548/](https://farm4.staticflickr.com/3131/3165456548_70fe4dc501.jpg)
 
-## What is a code smell?
+## What is this code smell?
 
 * This exercise focuses on shotgun surgery. Not sure what shotgun
   surgery is? Check it out
