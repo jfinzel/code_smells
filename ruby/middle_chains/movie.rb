@@ -1,6 +1,5 @@
 require "date"
 class Movie
-
   attr_reader :title, :rating, :origin
 
   def initialize(title, rating, origin)
@@ -21,6 +20,9 @@ class Movie
     (title[2].ord / 120.0 * rating.to_s.ord).round(2)
   end
 
+  def city
+    origin.address.city
+  end
 
 end
 

@@ -6,7 +6,6 @@ class Address
   attr_reader :state
   attr_reader :zipcode
 
-
   def initialize(house, street, city, state, zipcode)
     @house = house
     @street = street

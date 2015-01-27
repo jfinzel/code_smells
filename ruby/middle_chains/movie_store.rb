@@ -1,5 +1,4 @@
 class MovieStore
-
   attr_reader :address, :name
 
   def initialize(name, address)
@@ -28,8 +27,8 @@ class MovieStore
   def receipt(customer, movies)
     total_amount, frequent_renter_points = 0, 0
     result = "Rental Record for #{customer.name}\n"
-    result += "#{customer.house} #{customer.street}, #{customer.city}, #{customer.state} #{customer.zipcode},\n"
-    result += "#{customer.phone_number}\n"
+    result += "#{customer.address.house} #{customer.address.street}, #{customer.address.city}, #{customer.address.state} #{customer.address.zipcode},\n"
+    result += "#{customer.address.phone_number}\n"
     Array(movies).each do |movie|
       this_amount = 0
       case movie.rating

@@ -1,3 +1,5 @@
+require 'active_support'
+require 'rspec/rails'
 require 'rake/testtask'
 
 task :default => [:test]
